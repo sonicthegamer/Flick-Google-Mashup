@@ -1,0 +1,32 @@
+#map{
+    width:100%;
+    height:400px;
+    outline:5px #308C60 solid;
+    margin-top:20px;
+}
+
+button,input{
+    background-color:#DBF4E8;
+    border-radius:20px;
+    padding:1%;
+    border:none;
+    margin:0 10px;
+    font-size:0.9em;
+    border:5px #308C60 solid;
+}
+
+
+
+
+header{
+    background-color:#ACDFC6;
+    border:5px #308C60 solid;
+    margin:10px;
+}
+*{
+    text-align:center;
+}
+
+body{
+    background-color:#7BC5A1;
+}
