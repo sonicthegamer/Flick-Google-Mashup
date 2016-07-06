@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="style.css" type="text/css" />
         <script type="text/javascript" src="script.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <header>
@@ -18,13 +19,14 @@
         </div>
         </section>
         <footer>
-        
+            <h1> By Luis & Joel </h1>
         </footer>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOfQ-p4jlF0taLr02WGLorfjbgyveKjtg&callback=initMap"></script>
          <script>
         function initMap() {
           var mapDiv = document.getElementById('map');
           var map = new google.maps.Map(mapDiv, {
+              var myLatLng = {lat: -25.363, lng: 131.044};
               center: {lat: 44.540, lng: -78.546},
               zoom: 3
           });
