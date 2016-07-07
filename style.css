@@ -1,7 +1,7 @@
 #map{
     width:100%;
     height:400px;
-    outline:5px #308C60 solid;
+    outline:5px #69f0ae solid;
     margin-top:20px;
 }
 
@@ -12,7 +12,7 @@ button,input{
     border:none;
     margin:0 10px;
     font-size:0.9em;
-    border:5px #308C60 solid;
+    border:5px #69f0ae solid;
 }
 
 
@@ -20,13 +20,14 @@ button,input{
 
 header{
     background-color:#ACDFC6;
-    border:5px #308C60 solid;
+    border:5px #69f0ae solid;
     margin:10px;
+    color:rgba(0,0,0,0.87);
 }
 *{
     text-align:center;
 }
 
-body{
-    background-color:#7BC5A1;
+body{    
+    background-color:#4caf50;
 }

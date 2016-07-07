@@ -2,8 +2,10 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript" src="script.js"></script>
         <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <header>
@@ -11,7 +13,8 @@
         </header>
         <section>
         <div id="buttons">
-            <input type="text" name="query"/>
+            <input id="userInput" type="text" name="query"/>
+            <button id="Submit"> Submit </button>
             <button id="clear">Clear</button>
         </div>
         <div id="map">
@@ -23,19 +26,7 @@
         </footer>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOfQ-p4jlF0taLr02WGLorfjbgyveKjtg&callback=initMap"></script>
          <script>
-        function initMap() {
-          var mapDiv = document.getElementById('map');
-          var map = new google.maps.Map(mapDiv, {
-              var myLatLng = {lat: -25.363, lng: 131.044};
-              center: {lat: 44.540, lng: -78.546},
-              zoom: 3
-          });
-         var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          
-          });
-        }
+ 
     </script>
     
   
