@@ -1,7 +1,7 @@
 
 var map;
 var photos = [];
-
+var marker;
 
      function initMap() { 
         //var myLatLng = {lat:photos[0].latitude, lng:photos[0].longitude};
@@ -65,7 +65,7 @@ function(data){
             
         
     function newMarker(data){
-            for(var i=0;i<20;i++){
+            for(var i=0;i<50;i++){
             photos[i] = {
             latitude:data.photos.photo[i].latitude,
             longitude:data.photos.photo[i].longitude,
@@ -73,16 +73,35 @@ function(data){
             };
             var lat = photos[i].latitude;
             var long = photos[i].longitude;
-            var image = photos[i].url;
-            var contentString = "luis sucks";
+            var url = photos[i].url;
+            var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+            var contentString = '<img src = '+ url + '>'
             console.log(lat,long);
   
             var myLatLng = new google.maps.LatLng(parseFloat(lat),parseFloat(long));
-  
-            var marker = new google.maps.Marker({
+            
+           var infowindow = new google.maps.InfoWindow({
+            content: contentString,
+            maxWidth: 200
+            });
+            
+            
+            marker = new google.maps.Marker({
             position: myLatLng,
+            title: "hello",
             map: map,
             icon:image});
+            
+           google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+    return function() {
+        infowindow.setContent(content);
+        infowindow.open(map,marker);
+    };
+})(marker,contentString,infowindow)); 
+            
+            
+   
+      
             }
           }
 
