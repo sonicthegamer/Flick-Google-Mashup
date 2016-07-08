@@ -1,24 +1,26 @@
- 
-var map;
 
+var map;
+var photos = [];
 
 
      function initMap() { 
         //var myLatLng = {lat:photos[0].latitude, lng:photos[0].longitude};
 
           map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
+          zoom: 4,
+          center: {lat: 40, lng: -95.644},
+
           styles: [
-             {
+            {
     featureType: "all",
     stylers: [
-      { saturation: 20 }
+      { saturation: 200 }
     ]
   },{
     featureType: "road.arterial",
     elementType: "geometry",
     stylers: [
-      { hue: "#ff66cc" },
+      { hue: "#FF5555" },
       { saturation: 500 }
     ]
   },{
@@ -27,45 +29,62 @@ var map;
     stylers: [
       { visibility: "off" }
     ]
+  },{
+    featureType: "water",
+    elementType: "all",
+    stylers: [
+      { hue: "#OOffc4"},
+      { color: "#448080"},
+      ]
   }
             ]
         });
-        
 
 
-      }
+     }
 
 
 $(document).ready(function (){
 
 $("#Submit").click(function(){
+  $.getJSON("https://api.flickr.com/services/rest/?method=flickr.places.find&query=United States&has_geo=1&extras=geo, url_o&api_key=eea149dc8bcfd608a8d301aecd9dde86&tags=" + userInput + "&tagmode=any&format=json&jsoncallback=?",
+  
+function(data){
+  console.log(data);
     var userInput = $('#userInput').val();
-    $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&extras=geo, url_o&api_key=eea149dc8bcfd608a8d301aecd9dde86&tags=" + userInput + "&tagmode=any&format=json&jsoncallback=?",
+    $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&extras=geo, url_o&api_key=eea149dc8bcfd608a8d301aecd9dde86&woe_id=23424977&tags=" + userInput + "&tagmode=any&format=json&jsoncallback=?",
     function(data){
-   //     console.log(data);
+        console.log(data);
+          newMarker(data);
           
           
-          
-  //      var photos = [];
-    //    photos[0] = {
-      //    latitude:data.photos.photo[0].latitude,
-        //  longitude:data.photos.photo[0].longitude,
-          //url:data.photos.photo[0].url_o,
-      //  }
-
-        var lat = photos[0].latitude;
-        var long = photos[0].longitude;
-        console.log(lat,long);
-         var myLatLng = {lat:5,lng:5};
-        var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-
-          var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          icon: image
-        });
     });
 });
+});
+});
+            
+        
+    function newMarker(data){
+            for(var i=0;i<20;i++){
+            photos[i] = {
+            latitude:data.photos.photo[i].latitude,
+            longitude:data.photos.photo[i].longitude,
+            url:data.photos.photo[i].url_o,
+            };
+            var lat = photos[i].latitude;
+            var long = photos[i].longitude;
+            var image = photos[i].url;
+            var contentString = "luis sucks";
+            console.log(lat,long);
+  
+            var myLatLng = new google.maps.LatLng(parseFloat(lat),parseFloat(long));
+  
+            var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon:image});
+            }
+          }
 
 
     
@@ -88,8 +107,3 @@ $("#Submit").click(function(){
 
   
 
-
-
-
-// AIzaSyBOfQ-p4jlF0taLr02WGLorfjbgyveKjtg
-});

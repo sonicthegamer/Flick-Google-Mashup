@@ -15,7 +15,10 @@ button,input{
     border:5px #69f0ae solid;
 }
 
-
+img{
+    height:50px;
+    width:50px;
+}
 
 
 header{
