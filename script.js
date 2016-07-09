@@ -52,7 +52,7 @@ $("#Submit").click(function(){
 function(data){
   console.log(data);
     var userInput = $('#userInput').val();
-    $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&extras=geo, url_o&api_key=eea149dc8bcfd608a8d301aecd9dde86&woe_id=23424977&tags=" + userInput + "&tagmode=any&format=json&jsoncallback=?",
+    $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&extras=geo, url_o,url_s&api_key=eea149dc8bcfd608a8d301aecd9dde86&woe_id=23424977&tags=" + userInput + "&tagmode=any&format=json&jsoncallback=?",
     function(data){
         console.log(data);
           newMarker(data);
@@ -69,7 +69,7 @@ function(data){
             photos[i] = {
             latitude:data.photos.photo[i].latitude,
             longitude:data.photos.photo[i].longitude,
-            url:data.photos.photo[i].url_o,
+            url:data.photos.photo[i].url_s,
             };
             var lat = photos[i].latitude;
             var long = photos[i].longitude;
